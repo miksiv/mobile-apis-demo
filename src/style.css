@@ -1,0 +1,58 @@
+body {
+    font-family: system-ui, sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+#spinner {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dice {
+    display: block;
+    animation: spin 1.2s cubic-bezier(0, 1, 1, 0) infinite;
+}
+
+#result {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
+
+button {
+    padding: 0.7rem 1.2rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #0070f3;
+    color: white;
+}
+
+button:hover {
+    background: #0059c1;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
