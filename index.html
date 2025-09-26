@@ -3,20 +3,229 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emoji Party 🎉</title>
+    <title>Modern Web APIs Demo 🚀</title>
     <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
 <div id="app">
-    <h1>Emoji Party 🎉</h1>
-    <button id="spin-btn">Spin Emoji 🎰</button>
-    <div id="spinner" style="display: none;">
-        <div class="dice">🎲</div>
-        <div class="dice">🎲</div>
-        <div class="dice">🎲</div>
-    </div>
-    <div id="result"></div>
-    <button id="share-btn" style="display: none;">Share this Invite 📤</button>
+    <header>
+        <h1>Modern Web APIs Demo 🚀</h1>
+        <nav id="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">Overview</button>
+            <button class="nav-tab" data-tab="speech">Speech API</button>
+            <button class="nav-tab" data-tab="pressure">Compute Pressure</button>
+            <button class="nav-tab" data-tab="anchor">CSS Anchor</button>
+            <button class="nav-tab" data-tab="transition">View Transition</button>
+            <button class="nav-tab" data-tab="navigation">Navigation API</button>
+            <button class="nav-tab" data-tab="filesystem">File System</button>
+            <button class="nav-tab" data-tab="pip">Picture-in-Picture</button>
+            <button class="nav-tab" data-tab="closewatcher">CloseWatcher</button>
+            <button class="nav-tab" data-tab="vibration">Vibration</button>
+            <button class="nav-tab" data-tab="share">Web Share</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Overview Section -->
+        <section id="overview" class="tab-content active">
+            <h2>Welcome to Modern Web APIs Demo!</h2>
+            <p>This demo showcases cutting-edge web APIs that are shaping the future of web development.</p>
+            
+            <div class="api-grid">
+                <div class="api-card" data-tab="speech">
+                    <h3>🎤 Web Speech API</h3>
+                    <p>On-device speech recognition for voice commands and dictation</p>
+                </div>
+                <div class="api-card" data-tab="pressure">
+                    <h3>⚡ Compute Pressure API</h3>
+                    <p>Monitor system performance and thermal state</p>
+                </div>
+                <div class="api-card" data-tab="anchor">
+                    <h3>⚓ CSS Anchor Positioning</h3>
+                    <p>Position elements relative to anchor points</p>
+                </div>
+                <div class="api-card" data-tab="transition">
+                    <h3>✨ View Transition API</h3>
+                    <p>Smooth transitions between page states</p>
+                </div>
+                <div class="api-card" data-tab="navigation">
+                    <h3>🧭 Navigation API</h3>
+                    <p>Programmatic navigation and history management</p>
+                </div>
+                <div class="api-card" data-tab="filesystem">
+                    <h3>📁 File System Access API</h3>
+                    <p>Read and write files directly from the browser</p>
+                </div>
+                <div class="api-card" data-tab="pip">
+                    <h3>🖼️ Document Picture-in-Picture</h3>
+                    <p>Floating window for document content</p>
+                </div>
+                <div class="api-card" data-tab="closewatcher">
+                    <h3>👁️ CloseWatcher API</h3>
+                    <p>Detect when users want to close or navigate away</p>
+                </div>
+                <div class="api-card" data-tab="vibration">
+                    <h3>📳 Vibration API</h3>
+                    <p>Haptic feedback for mobile devices</p>
+                </div>
+                <div class="api-card" data-tab="share">
+                    <h3>📤 Web Share API</h3>
+                    <p>Native sharing capabilities across platforms</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Speech API Section -->
+        <section id="speech" class="tab-content">
+            <h2>🎤 Web Speech API</h2>
+            <p>Try speaking to see on-device speech recognition in action!</p>
+            <div class="demo-container">
+                <button id="speech-btn" class="demo-btn">Start Listening 🎤</button>
+                <div id="speech-result" class="result-box"></div>
+                <div id="speech-status" class="status-text"></div>
+            </div>
+        </section>
+
+        <!-- Compute Pressure API Section -->
+        <section id="pressure" class="tab-content">
+            <h2>⚡ Compute Pressure API</h2>
+            <p>Monitor your device's compute pressure and thermal state</p>
+            <div class="demo-container">
+                <button id="pressure-btn" class="demo-btn">Start Monitoring 📊</button>
+                <div id="pressure-result" class="result-box"></div>
+                <div id="pressure-chart" class="pressure-chart"></div>
+            </div>
+        </section>
+
+        <!-- CSS Anchor Positioning Section -->
+        <section id="anchor" class="tab-content">
+            <h2>⚓ CSS Anchor Positioning</h2>
+            <p>Position elements relative to anchor points</p>
+            <div class="demo-container">
+                <div class="anchor-demo">
+                    <div class="anchor-point" id="anchor-point">Anchor Point</div>
+                    <div class="anchored-element" id="anchored-element">Anchored Element</div>
+                </div>
+                <button id="anchor-btn" class="demo-btn">Toggle Position 🔄</button>
+            </div>
+        </section>
+
+        <!-- View Transition API Section -->
+        <section id="transition" class="tab-content">
+            <h2>✨ View Transition API</h2>
+            <p>Experience smooth transitions between different states</p>
+            <div class="demo-container">
+                <div class="transition-demo">
+                    <div class="transition-card" id="transition-card">
+                        <h3>Card 1</h3>
+                        <p>Click to transition!</p>
+                    </div>
+                </div>
+                <button id="transition-btn" class="demo-btn">Animate Transition ✨</button>
+            </div>
+        </section>
+
+        <!-- Navigation API Section -->
+        <section id="navigation" class="tab-content">
+            <h2>🧭 Navigation API</h2>
+            <p>Programmatic navigation and history management</p>
+            <div class="demo-container">
+                <button id="nav-back-btn" class="demo-btn">Go Back ⬅️</button>
+                <button id="nav-forward-btn" class="demo-btn">Go Forward ➡️</button>
+                <button id="nav-push-btn" class="demo-btn">Push State 📝</button>
+                <div id="nav-result" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- File System Access API Section -->
+        <section id="filesystem" class="tab-content">
+            <h2>📁 File System Access API</h2>
+            <p>Read and write files directly from the browser</p>
+            <div class="demo-container">
+                <button id="file-read-btn" class="demo-btn">Read File 📖</button>
+                <button id="file-write-btn" class="demo-btn">Write File ✍️</button>
+                <div id="file-result" class="result-box"></div>
+                <textarea id="file-content" placeholder="File content will appear here..."></textarea>
+            </div>
+        </section>
+
+        <!-- Document Picture-in-Picture Section -->
+        <section id="pip" class="tab-content">
+            <h2>🖼️ Document Picture-in-Picture</h2>
+            <p>Open content in a floating window</p>
+            <div class="demo-container">
+                <div class="pip-content" id="pip-content">
+                    <h3>PiP Content</h3>
+                    <p>This content can be opened in Picture-in-Picture mode!</p>
+                    <div class="pip-video">📺 Video Placeholder</div>
+                </div>
+                <button id="pip-btn" class="demo-btn">Open PiP 🖼️</button>
+                <div id="pip-status" class="status-text"></div>
+            </div>
+        </section>
+
+        <!-- CloseWatcher API Section -->
+        <section id="closewatcher" class="tab-content">
+            <h2>👁️ CloseWatcher API</h2>
+            <p>Detect when users want to close or navigate away</p>
+            <div class="demo-container">
+                <button id="closewatcher-btn" class="demo-btn">Start Watching 👁️</button>
+                <div id="closewatcher-result" class="result-box"></div>
+                <div class="closewatcher-demo">
+                    <p>Try to close this tab or navigate away to see the CloseWatcher in action!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vibration API Section -->
+        <section id="vibration" class="tab-content">
+            <h2>📳 Vibration API</h2>
+            <p>Experience haptic feedback on mobile devices</p>
+            <div class="demo-container">
+                <button id="vibration-single-btn" class="demo-btn">Single Vibration 📳</button>
+                <button id="vibration-pattern-btn" class="demo-btn">Pattern Vibration 📳📳</button>
+                <button id="vibration-stop-btn" class="demo-btn">Stop Vibration ⏹️</button>
+                <div id="vibration-result" class="result-box"></div>
+                <div class="vibration-demo">
+                    <p>Try these vibration patterns on a mobile device!</p>
+                    <div class="vibration-patterns">
+                        <div class="pattern-item">
+                            <strong>Single:</strong> Quick vibration
+                        </div>
+                        <div class="pattern-item">
+                            <strong>Pattern:</strong> Long-short-long pattern
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Share API Section -->
+        <section id="share" class="tab-content">
+            <h2>📤 Web Share API</h2>
+            <p>Share content using native platform sharing capabilities</p>
+            <div class="demo-container">
+                <button id="share-text-btn" class="demo-btn">Share Text 📝</button>
+                <button id="share-url-btn" class="demo-btn">Share URL 🔗</button>
+                <button id="share-file-btn" class="demo-btn">Share File 📄</button>
+                <div id="share-result" class="result-box"></div>
+                <div class="share-demo">
+                    <p>Share different types of content using your device's native sharing options!</p>
+                    <div class="share-options">
+                        <div class="share-item">
+                            <strong>Text:</strong> Share plain text content
+                        </div>
+                        <div class="share-item">
+                            <strong>URL:</strong> Share a web link
+                        </div>
+                        <div class="share-item">
+                            <strong>File:</strong> Share a generated text file
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
 <script type="module" src="/src/main.ts"></script>
 </body>
