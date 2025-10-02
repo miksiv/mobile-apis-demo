@@ -1,37 +1,18 @@
 // Service Worker for Push Notifications
-const CACHE_NAME = 'push-demo-v1';
-const urlsToCache = [
-    '/',
-    '/src/main.ts',
-    '/src/style.css'
-];
 
-// Install event - cache resources
+// Install event - skip waiting to activate immediately
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                return cache.addAll(urlsToCache);
-            })
-    );
+    console.log('Service Worker installing...');
+    self.skipWaiting();
 });
 
-// Activate event - clean up old caches
+// Activate event - claim all clients immediately
 self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
+    console.log('Service Worker activating...');
+    event.waitUntil(self.clients.claim());
 });
 
-// Push event - handle incoming push notifications
+// Push event - handle incoming push notifications (following the guide's approach)
 self.addEventListener('push', (event) => {
     console.log('Push event received:', event);
     
@@ -56,17 +37,20 @@ self.addEventListener('push', (event) => {
         ]
     };
 
-    // If the push event has data, use it
+    // If the push event has data, use it (following the guide's data handling)
     if (event.data) {
         try {
             const data = event.data.json();
+            console.log('Push data received:', data);
             notificationData = { ...notificationData, ...data };
         } catch (e) {
             // If data is not JSON, treat it as text
+            console.log('Push data as text:', event.data.text());
             notificationData.body = event.data.text();
         }
     }
 
+    // Extend the event lifetime until the browser has shown the notification
     const promiseChain = self.registration.showNotification(
         notificationData.title,
         notificationData
@@ -123,3 +107,6 @@ self.addEventListener('message', (event) => {
         self.skipWaiting();
     }
 });
+
+// Log when service worker is ready
+console.log('Service Worker loaded and ready!');
