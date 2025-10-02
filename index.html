@@ -13,15 +13,13 @@
         <nav id="nav-tabs">
             <button class="nav-tab active" data-tab="overview">Overview</button>
             <button class="nav-tab" data-tab="speech">Speech API</button>
-            <button class="nav-tab" data-tab="pressure">Compute Pressure</button>
             <button class="nav-tab" data-tab="anchor">CSS Anchor</button>
             <button class="nav-tab" data-tab="transition">View Transition</button>
-            <button class="nav-tab" data-tab="navigation">Navigation API</button>
             <button class="nav-tab" data-tab="filesystem">File System</button>
             <button class="nav-tab" data-tab="pip">Picture-in-Picture</button>
-            <button class="nav-tab" data-tab="closewatcher">CloseWatcher</button>
             <button class="nav-tab" data-tab="vibration">Vibration</button>
             <button class="nav-tab" data-tab="share">Web Share</button>
+            <button class="nav-tab" data-tab="push">Push API</button>
         </nav>
     </header>
 
@@ -36,10 +34,6 @@
                     <h3>🎤 Web Speech API</h3>
                     <p>On-device speech recognition for voice commands and dictation</p>
                 </div>
-                <div class="api-card" data-tab="pressure">
-                    <h3>⚡ Compute Pressure API</h3>
-                    <p>Monitor system performance and thermal state</p>
-                </div>
                 <div class="api-card" data-tab="anchor">
                     <h3>⚓ CSS Anchor Positioning</h3>
                     <p>Position elements relative to anchor points</p>
@@ -47,10 +41,6 @@
                 <div class="api-card" data-tab="transition">
                     <h3>✨ View Transition API</h3>
                     <p>Smooth transitions between page states</p>
-                </div>
-                <div class="api-card" data-tab="navigation">
-                    <h3>🧭 Navigation API</h3>
-                    <p>Programmatic navigation and history management</p>
                 </div>
                 <div class="api-card" data-tab="filesystem">
                     <h3>📁 File System Access API</h3>
@@ -60,10 +50,6 @@
                     <h3>🖼️ Document Picture-in-Picture</h3>
                     <p>Floating window for document content</p>
                 </div>
-                <div class="api-card" data-tab="closewatcher">
-                    <h3>👁️ CloseWatcher API</h3>
-                    <p>Detect when users want to close or navigate away</p>
-                </div>
                 <div class="api-card" data-tab="vibration">
                     <h3>📳 Vibration API</h3>
                     <p>Haptic feedback for mobile devices</p>
@@ -71,6 +57,10 @@
                 <div class="api-card" data-tab="share">
                     <h3>📤 Web Share API</h3>
                     <p>Native sharing capabilities across platforms</p>
+                </div>
+                <div class="api-card" data-tab="push">
+                    <h3>🔔 Push API</h3>
+                    <p>Send push notifications from the website</p>
                 </div>
             </div>
         </section>
@@ -86,16 +76,6 @@
             </div>
         </section>
 
-        <!-- Compute Pressure API Section -->
-        <section id="pressure" class="tab-content">
-            <h2>⚡ Compute Pressure API</h2>
-            <p>Monitor your device's compute pressure and thermal state</p>
-            <div class="demo-container">
-                <button id="pressure-btn" class="demo-btn">Start Monitoring 📊</button>
-                <div id="pressure-result" class="result-box"></div>
-                <div id="pressure-chart" class="pressure-chart"></div>
-            </div>
-        </section>
 
         <!-- CSS Anchor Positioning Section -->
         <section id="anchor" class="tab-content">
@@ -125,17 +105,6 @@
             </div>
         </section>
 
-        <!-- Navigation API Section -->
-        <section id="navigation" class="tab-content">
-            <h2>🧭 Navigation API</h2>
-            <p>Programmatic navigation and history management</p>
-            <div class="demo-container">
-                <button id="nav-back-btn" class="demo-btn">Go Back ⬅️</button>
-                <button id="nav-forward-btn" class="demo-btn">Go Forward ➡️</button>
-                <button id="nav-push-btn" class="demo-btn">Push State 📝</button>
-                <div id="nav-result" class="result-box"></div>
-            </div>
-        </section>
 
         <!-- File System Access API Section -->
         <section id="filesystem" class="tab-content">
@@ -164,18 +133,6 @@
             </div>
         </section>
 
-        <!-- CloseWatcher API Section -->
-        <section id="closewatcher" class="tab-content">
-            <h2>👁️ CloseWatcher API</h2>
-            <p>Detect when users want to close or navigate away</p>
-            <div class="demo-container">
-                <button id="closewatcher-btn" class="demo-btn">Start Watching 👁️</button>
-                <div id="closewatcher-result" class="result-box"></div>
-                <div class="closewatcher-demo">
-                    <p>Try to close this tab or navigate away to see the CloseWatcher in action!</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Vibration API Section -->
         <section id="vibration" class="tab-content">
@@ -221,6 +178,42 @@
                         <div class="share-item">
                             <strong>File:</strong> Share a generated text file
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Push API Section -->
+        <section id="push" class="tab-content">
+            <h2>🔔 Push API</h2>
+            <p>Send push notifications from the website to users even when the page is closed</p>
+            <div class="demo-container">
+                <button id="push-subscribe-btn" class="demo-btn">Subscribe to Notifications 🔔</button>
+                <button id="push-unsubscribe-btn" class="demo-btn">Unsubscribe 📵</button>
+                <button id="push-test-btn" class="demo-btn">Send Test Notification 📤</button>
+                <div id="push-result" class="result-box"></div>
+                <div id="push-status" class="status-text"></div>
+                <div class="push-demo">
+                    <p>Experience push notifications that work even when the browser is closed!</p>
+                    <div class="push-options">
+                        <div class="push-item">
+                            <strong>Subscribe:</strong> Request permission and subscribe to push notifications
+                        </div>
+                        <div class="push-item">
+                            <strong>Test:</strong> Send a test notification to see it in action
+                        </div>
+                        <div class="push-item">
+                            <strong>Unsubscribe:</strong> Stop receiving push notifications
+                        </div>
+                    </div>
+                    <div class="push-info">
+                        <h4>How it works:</h4>
+                        <ol>
+                            <li>Click "Subscribe to Notifications" to request permission</li>
+                            <li>Allow notifications when prompted by your browser</li>
+                            <li>Click "Send Test Notification" to receive a notification</li>
+                            <li>Even if you close this tab, notifications will still appear!</li>
+                        </ol>
                     </div>
                 </div>
             </div>
