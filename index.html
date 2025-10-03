@@ -109,13 +109,52 @@
         <!-- CSS Anchor Positioning Section -->
         <section id="anchor" class="tab-content">
             <h2>⚓ CSS Anchor Positioning</h2>
-            <p>Position elements relative to anchor points</p>
+            <p>Position elements relative to anchor points using modern CSS Anchor Positioning API</p>
             <div class="demo-container">
-                <div class="anchor-demo">
-                    <div class="anchor-point" id="anchor-point">Anchor Point</div>
-                    <div class="anchored-element" id="anchored-element">Anchored Element</div>
+                <div class="anchor-demo-wrapper">
+                    <!-- Example 1: Basic anchor positioning -->
+                    <div class="anchor-example">
+                        <h3>1. Basic Anchor Positioning</h3>
+                        <div class="anchor-demo">
+                            <button class="anchor-button" id="anchor-1">Click Me! 🎯</button>
+                            <div class="tooltip" id="tooltip-1">This tooltip is anchored to the button above!</div>
+                        </div>
+                    </div>
+
+                    <!-- Example 2: Position Area -->
+                    <div class="anchor-example">
+                        <h3>2. Position Area (Different Sides)</h3>
+                        <div class="anchor-demo">
+                            <div class="anchor-box" id="anchor-2">Anchor Box</div>
+                            <div class="anchored-box" id="anchored-2">Top</div>
+                        </div>
+                        <button id="position-area-btn" class="demo-btn">Cycle Position 🔄</button>
+                    </div>
+
+                    <!-- Example 3: Size from anchor -->
+                    <div class="anchor-example">
+                        <h3>3. Size Based on Anchor</h3>
+                        <div class="anchor-demo">
+                            <div class="anchor-resizable" id="anchor-3">Resize Me!</div>
+                            <div class="anchored-sized" id="anchored-3">I match your width!</div>
+                        </div>
+                        <input type="range" id="anchor-size-slider" min="100" max="300" value="150" />
+                        <span id="size-value">150px</span>
+                    </div>
+
                 </div>
-                <button id="anchor-btn" class="demo-btn">Toggle Position 🔄</button>
+
+                <div class="anchor-info">
+                    <h4>CSS Anchor Positioning Features:</h4>
+                    <ul>
+                        <li>📍 <strong>anchor-name:</strong> Defines an element as an anchor point</li>
+                        <li>🔗 <strong>position-anchor:</strong> Links an element to its anchor</li>
+                        <li>📏 <strong>anchor():</strong> Function to position relative to anchor edges</li>
+                        <li>🎯 <strong>position-area:</strong> Simplified positioning in grid-like areas</li>
+                        <li>📐 <strong>anchor-size():</strong> Size elements based on anchor dimensions</li>
+                    </ul>
+                    <p><strong>Browser Support:</strong> This API is experimental and may require Chrome 125+ or enabling flags.</p>
+                </div>
             </div>
         </section>
 

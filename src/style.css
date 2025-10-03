@@ -272,37 +272,269 @@ h2 {
 }
 
 
-/* Anchor Positioning Styles */
+/* ============================================
+   Anchor Positioning Styles
+   
+   CSS Anchor Positioning API - Experimental
+   Requires Chrome 125+ or experimental flags
+   
+   Key Features Demonstrated:
+   - anchor-name: Define anchor points
+   - position-anchor: Link to anchors
+   - anchor(): Position relative to edges
+   - anchor-size(): Match anchor dimensions
+   - position-area: Grid-based positioning
+   ============================================ */
+
+.anchor-demo-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.anchor-example {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+}
+
+.anchor-example h3 {
+    margin: 0 0 1rem 0;
+    color: #495057;
+    font-size: 1.1rem;
+}
+
 .anchor-demo {
     position: relative;
-    height: 300px;
-    background: #f8f9fa;
-    border: 2px dashed #ccc;
+    min-height: 200px;
+    background: white;
+    border: 2px dashed #dee2e6;
     border-radius: 8px;
-    margin: 1rem 0;
-    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.anchor-point {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Example 1: Basic Anchor with Tooltip */
+.anchor-button {
+    anchor-name: --button-anchor;
     background: #667eea;
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.anchored-element {
+.anchor-button:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.tooltip {
     position: absolute;
+    position-anchor: --button-anchor;
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% 0;
+    
+    background: #2c3e50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin-bottom: 8px;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% 0;
+    border: 6px solid transparent;
+    border-top-color: #2c3e50;
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Example 2: Position Area */
+.anchor-box {
+    anchor-name: --box-anchor;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.anchored-box {
+    position: absolute;
+    position-anchor: --box-anchor;
+    
     background: #ff6b6b;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.5s ease;
+    font-size: 0.875rem;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Position area variations */
+.anchored-box.position-top {
+    position-area: top;
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% 0;
+    margin-bottom: 8px;
+}
+
+.anchored-box.position-right {
+    position-area: right;
+    top: anchor(center);
+    left: anchor(right);
+    translate: 0 -50%;
+    margin-left: 8px;
+}
+
+.anchored-box.position-bottom {
+    position-area: bottom;
+    top: anchor(bottom);
+    left: anchor(center);
+    translate: -50% 0;
+    margin-top: 8px;
+}
+
+.anchored-box.position-left {
+    position-area: left;
+    top: anchor(center);
+    right: anchor(left);
+    translate: 0 -50%;
+    margin-right: 8px;
+}
+
+/* Default to top position */
+.anchored-box:not([class*="position-"]) {
+    position-area: top;
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% 0;
+    margin-bottom: 8px;
+}
+
+/* Example 3: Size from Anchor */
+.anchor-resizable {
+    anchor-name: --resize-anchor;
+    width: 150px;
+    height: 80px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: width 0.3s ease;
+    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);
+}
+
+.anchored-sized {
+    position: absolute;
+    position-anchor: --resize-anchor;
+    top: anchor(bottom);
+    left: anchor(left);
+    
+    width: anchor-size(width);
+    
+    background: #4ecdc4;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 12px;
+    transition: width 0.3s ease;
+    box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+}
+
+#anchor-size-slider {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1rem;
+}
+
+#size-value {
+    display: inline-block;
+    margin-left: 1rem;
+    font-weight: 600;
+    color: #667eea;
+}
+
+/* Info section for anchor positioning */
+.anchor-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #e7f3ff;
+    border-left: 4px solid #667eea;
+    border-radius: 8px;
+}
+
+.anchor-info h4 {
+    margin: 0 0 1rem 0;
+    color: #2c3e50;
+}
+
+.anchor-info ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.anchor-info li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.anchor-info p {
+    margin: 1rem 0 0 0;
+    font-style: italic;
+    color: #495057;
+}
+
+/* Browser warning */
+.browser-warning {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: #856404;
+    font-size: 0.95rem;
+}
+
+.browser-warning strong {
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 /* Transition API Styles */
