@@ -218,21 +218,362 @@ h2 {
 /* Transition API Styles */
 .transition-demo {
     margin: 1rem 0;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .transition-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 2rem;
-    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    min-height: 300px;
+    border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 1rem auto;
-    max-width: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
 }
 
 .transition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Welcome Card Styles */
+.card-welcome {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-welcome .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-welcome .card-header h3 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.card-welcome .card-icon {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+}
+
+.card-welcome .card-body p {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    width: 75%;
+    border-radius: 4px;
+    animation: progress 3s ease-in-out infinite;
+}
+
+/* Design Card Styles */
+.card-design {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    display: flex;
+    min-height: 300px;
+}
+
+.card-design .card-sidebar {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.card-design .sidebar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: rotate 4s linear infinite;
+}
+
+.card-design .sidebar-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-design .stat {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.card-design .card-main {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-design .card-main h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.6rem;
+}
+
+.card-design .card-main p {
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+}
+
+.color-palette {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.color-swatch:nth-child(2) { animation-delay: 0.2s; }
+.color-swatch:nth-child(3) { animation-delay: 0.4s; }
+.color-swatch:nth-child(4) { animation-delay: 0.6s; }
+
+/* Performance Card Styles */
+.card-performance {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+    padding: 1.5rem;
+}
+
+.card-performance .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 1rem;
+    height: 100%;
+}
+
+.card-performance .grid-item:first-child {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1rem;
+}
+
+.card-performance .grid-item:first-child h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+}
+
+.card-performance .grid-item:first-child p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.card-performance .metric {
+    background: rgba(255,255,255,0.15);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.card-performance .metric:hover {
     transform: scale(1.05);
+    background: rgba(255,255,255,0.2);
+}
+
+.card-performance .metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-performance .metric-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Interactive Card Styles */
+.card-interactive {
+    background: linear-gradient(135deg, #96ceb4 0%, #feca57 100%);
+    color: #2c3e50;
+    padding: 1.5rem;
+}
+
+.card-interactive .card-modern {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-interactive .modern-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(44,62,80,0.1);
+}
+
+.card-interactive .avatar {
+    width: 50px;
+    height: 50px;
+    background: rgba(44,62,80,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.card-interactive .header-text h3 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.card-interactive .subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+.card-interactive .modern-content {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.card-interactive .modern-content p {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+}
+
+.interactive-elements {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.mini-btn {
+    background: rgba(44,62,80,0.1);
+    border: 1px solid rgba(44,62,80,0.2);
+    color: #2c3e50;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mini-btn:hover {
+    background: rgba(44,62,80,0.2);
+    transform: translateY(-2px);
+}
+
+.card-interactive .modern-footer {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(44,62,80,0.1);
+}
+
+.card-interactive .footer-item {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes progress {
+    0% { width: 0%; }
+    50% { width: 75%; }
+    100% { width: 0%; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Transition Info Styles */
+.transition-info {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.transition-info p {
+    margin: 0 0 1rem 0;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.transition-info ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #6c757d;
+}
+
+.transition-info li {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.transition-info strong {
+    color: #495057;
 }
 
 /* File System Styles */
