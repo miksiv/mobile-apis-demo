@@ -181,6 +181,96 @@ h2 {
     color: #856404;
 }
 
+.speech-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.speech-controls label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.language-selector {
+    padding: 0.5rem 1rem;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.language-selector:hover {
+    border-color: #764ba2;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.language-selector:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.install-btn {
+    animation: pulse-install 2s ease-in-out infinite;
+}
+
+@keyframes pulse-install {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(254, 202, 87, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(254, 202, 87, 0.5);
+    }
+}
+
+.speech-info {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.speech-info h4 {
+    margin: 0 0 1rem 0;
+    color: #495057;
+    font-size: 1.1rem;
+}
+
+.speech-info ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+    color: #6c757d;
+}
+
+.speech-info li {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.speech-info p {
+    margin: 0;
+    color: #495057;
+    font-size: 0.95rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.speech-info strong {
+    color: #495057;
+}
+
 
 /* Anchor Positioning Styles */
 .anchor-demo {
